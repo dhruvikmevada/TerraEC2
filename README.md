@@ -1,14 +1,21 @@
-# 🚀 TerraEC2 - Simple AWS EC2 Provisioning
+# 🚀 TerraEC2 - AWS EC2 with Custom VPC Provisioning
 
-Hey there! Welcome to TerraEC2 - a super simple way to spin up an Ubuntu EC2 instance on AWS. I've added GitHub Actions to make sure everything runs smoothly with automated testing.
+Hey there! Welcome to TerraEC2 - a comprehensive Terraform project that sets up a fully configured EC2 instance within its own VPC. Complete with automated testing via GitHub Actions, this project creates a production-ready environment with proper networking and security configurations.
 
 ## 🎯 What's This All About?
 
-This project helps you quickly deploy an EC2 instance without the AWS console hassle. Perfect for:
-- Testing stuff quickly
-- Learning Terraform
-- Setting up a basic dev environment
-- Getting started with AWS infrastructure
+This project automates the deployment of:
+- A custom VPC with proper networking setup
+- An EC2 instance in a public subnet
+- Pre-configured Apache web server
+- All necessary security groups and routing
+
+Perfect for:
+- Setting up isolated development environments
+- Learning AWS networking concepts
+- Quick deployment of web servers
+- Understanding infrastructure as code
+- Testing multi-tier applications
 
 ## 🛠️ Before You Start
 
@@ -39,16 +46,26 @@ Then just:
 ├── .github/workflows/   # GitHub Actions workflow
 ├── backend.tf          # S3 backend configuration
 ├── main.tf            # Main EC2 instance configuration
+├── vpc.tf             # VPC and networking components
 ├── outputs.tf         # Output definitions
 ├── providers.tf       # AWS provider configuration
 ├── variables.tf       # Variable declarations
 ├── terraform.tfvars   # Variable values
-└── README.md         # This file
+├── scripts/
+│   └── install_apache.sh  # Apache installation script
+└── docs/
+    └── ec2-custom-vpc.md  # Manual VPC setup guide
 ```
 
 ## Infrastructure Components
 
 - Ubuntu EC2 instance (t2.micro)
+- Custom VPC (192.168.0.0/16)
+- Public Subnet (192.168.1.0/24)
+- Internet Gateway
+- Route Table with internet access
+- Security Group (SSH, HTTP, HTTPS)
+- Apache2 web server
 - S3 backend for state management
 - Region: us-east-1
 
@@ -68,11 +85,17 @@ Every time you push your code, GitHub Actions will automatically:
 | instance_name | Name tag for EC2 | project-planit-vm |
 | instance_type | EC2 instance size | t2.micro |
 | ubuntu_ami | Ubuntu AMI ID | ami-0e2c8caa4b6378d8c |
+| vpc_name | Name of the VPC | project-terraec2-vpc |
+| vpc_cidr | VPC CIDR block | 192.168.0.0/16 |
+| vpc_subnet | Subnet CIDR block | 192.168.1.0/24 |
+| key_name | SSH key pair name | tf-project |
 
 ## Outputs
 
 - `public_ip`: The public IP address of the EC2 instance
 - `instance_id`: The AWS instance ID
+- `vpc_id`: The ID of the created VPC
+- `subnet_id`: The ID of the created subnet
 
 ## 🔐 Stay Safe Out There!
 
