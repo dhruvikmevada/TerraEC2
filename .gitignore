@@ -32,3 +32,6 @@ override.tf.json
 # System files
 .DS_Store
 Thumbs.db
+
+# .pem files
+*.pem
