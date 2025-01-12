@@ -1,0 +1,35 @@
+name: TerraEC2 CI/CD
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    setup:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+            
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v1
+              with:
+                  terraform_version: 1.0.0
+            
+            - name: Setup AWS CLI
+              uses: aws-actions/setup-python@v2
+              with:
+                  python-version: '3.8'
+                  aws-cli-version: 'latest'
+    test:
+        runs-on: ubuntu-latest
+        needs: setup
+        steps:
+            - name: Install Terraform
+              run: terraform init
+            - name: Terraform Format
+              run: terraform fmt -check
+            - name: Terraform Validate
+              run: terraform validate
+            - name: Terraform Plan
+              run: terraform plan
