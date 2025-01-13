@@ -5,38 +5,27 @@ on:
     pull_request:
 
 jobs:
-    setup:
+    test:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
               uses: actions/checkout@v3
             
+            - name: Setup AWS
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: ${{ secrets.AWS_REGION }}
+            
             - name: Setup Terraform
               uses: hashicorp/setup-terraform@v1
               with:
                   terraform_version: 1.0.0
-            
-            - name: Setup Python
-              uses: actions/setup-python@v2
-              with:
-                  python-version: '3.10'
-            
-            - name: Install AWS CLI
-              run: |
-                  python -m pip install --upgrade pip
-                  pip install awscli
-                  aws --version
-                  aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-                  aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                  aws configure set region ${{ secrets.AWS_REGION }}
-                  aws --version
-                  pwd
-                  ls -lrth
-                  terraform --version
-    test:
-        runs-on: ubuntu-latest
-        needs: setup
-        steps:
+                  
+            - name: Check terraform version
+              uses: terraform --version
+
             - name: Install Terraform
               run: terraform init
               working-directory: ./terraform
