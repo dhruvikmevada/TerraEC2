@@ -33,15 +33,15 @@ jobs:
                   pwd
                   ls -lrth
                   terraform --version
-    # test:
-    #     runs-on: ubuntu-latest
-    #     needs: setup
-    #     steps:
-    #         - name: Install Terraform
-    #           run: terraform init
-    #         - name: Terraform Format
-    #           run: terraform fmt -check
-    #         - name: Terraform Validate
-    #           run: terraform validate
-    #         - name: Terraform Plan
-    #           run: terraform plan
+    test:
+        runs-on: ubuntu-latest
+        needs: setup
+        steps:
+            - name: Install Terraform
+              run: terraform init
+            - name: Terraform Format
+              run: terraform fmt -check
+            - name: Terraform Validate
+              run: terraform validate
+            - name: Terraform Plan
+              run: terraform plan
