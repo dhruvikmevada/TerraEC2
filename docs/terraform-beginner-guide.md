@@ -80,10 +80,10 @@ Terraform uses a declarative approach, where you define the desired state of you
 ### Providers
 
 Providers are plugins that enable Terraform to interact with various cloud providers (e.g., AWS, Azure, GCP). You configure a provider in Terraform using the `provider` block.
-
+     
 ### Resources
 
-Resources are the components of your infrastructure (e.g., AWS EC2 instance, S3 bucket). You define resources in `.tf` files using the `resource` block.
+Resources are the components of your infrastructure (e.g., AWS EC2 instance, S3 bucket). You define  resources in `.tf` files using the `resource` block.
 
 ### State
 
@@ -204,6 +204,12 @@ Pass values to variables via `terraform.tfvars`, command-line flags, or environm
     ```
 
 ## Understanding the Project
+
+### Project Architecture
+
+![Project Architecture](./project_diagram.jpegproject-architecture.png)
+
+The image above illustrates the architecture of the TerraEC2 project. It shows the various components and their relationships within the AWS environment. This architecture ensures a secure and scalable environment for deploying and managing your infrastructure using Terraform.
 
 ### Project Structure
 
