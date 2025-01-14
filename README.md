@@ -22,10 +22,34 @@ Perfect for:
 ## 🛠️ Before You Start
 
 You'll need:
-- Terraform (1.0.0 or newer)
+- Terraform (1.10.4 or newer)
 - AWS CLI set up on your machine
 - An AWS account with permissions to create stuff
 - A GitHub account if you want to use the cool automated testing
+
+## 🔧 Installing and Configuring AWS CLI
+
+First, install the AWS CLI:
+
+```bash
+# On macOS
+brew install awscli
+
+# On Ubuntu
+sudo apt-get update
+sudo apt-get install awscli
+
+# On Windows
+choco install awscli
+```
+
+Next, configure your AWS CLI with your credentials:
+
+```bash
+aws configure
+```
+
+You'll be prompted to enter your AWS Access Key ID, Secret Access Key, region, and output format. Make sure you have these details handy.
 
 ## 🚦 Let's Get Started!
 
