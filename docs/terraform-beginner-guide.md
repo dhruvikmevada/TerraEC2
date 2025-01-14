@@ -207,7 +207,7 @@ Pass values to variables via `terraform.tfvars`, command-line flags, or environm
 
 ### Project Architecture
 
-![Project Architecture](./project_diagram.jpegproject-architecture.png)
+![Project Architecture](./project-architecture.png)
 
 The image above illustrates the architecture of the TerraEC2 project. It shows the various components and their relationships within the AWS environment. This architecture ensures a secure and scalable environment for deploying and managing your infrastructure using Terraform.
 
