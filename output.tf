@@ -1,5 +1,5 @@
 output "public_ip" {
-  sensitive = true
+  sensitive = true  // Hides the output value in the Terraform UI and logs for security reasons
   value     = aws_instance.ubuntu_vm.public_ip
 }
 
