@@ -1,3 +1,5 @@
+[![TerraEC2 CI/CD](https://github.com/dhruvikmevada/TerraEC2/actions/workflows/main.yml/badge.svg)](https://github.com/dhruvikmevada/TerraEC2/actions/workflows/main.yml)
+
 # 🚀 TerraEC2 - AWS EC2 with Custom VPC Provisioning
 
 Hey there! Welcome to TerraEC2 - a comprehensive Terraform project that sets up a fully configured EC2 instance within its own VPC. Complete with automated testing via GitHub Actions, this project creates a production-ready environment with proper networking and security configurations.
